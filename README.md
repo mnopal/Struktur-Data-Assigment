@@ -1,7 +1,7 @@
-# Struktur-Data-Assigment
+## Repository praktikum algoritma dan struktur data
 
-<pra>
-NAMA : muhammad naufal
-NIM  : 103112400126
-KELAS: IF - 12 - 04
-</pra>
+<pre>
+Nama : Muhammad Naufal
+NIM : 103112400126
+Kelas : IF - 12 - 04
+</pre>
