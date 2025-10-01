@@ -189,24 +189,41 @@ Program tersebut merupakan struktur data struct di C++ dengan contoh data mahasi
 
 ## Unguided 
 
-### 1. [Soal]
+### 1. SOAL.1
+<img width="1722" height="166" alt="image" src="https://github.com/user-attachments/assets/040c4439-cecb-4bf5-8abc-751af905e878" />
 
 ```C++
 #include <iostream>
 using namespace std;
 
-int main() {
-    cout << "ini adalah file code unguided praktikan" << endl;
+int main(){
+    float a;
+    float b;
+
+    //Inputan
+     cout << "masukkan angka 1: " << endl;
+     cin >> a;
+     cout << "masukkan angka 2: " << endl;
+     cin >> b;
+
+    //Operasi Dasar
+    cout << "Hasil Penjumlahan = " << (a+b) << endl;
+    cout << "Hasil Pengurangan = " << (a-b) << endl;
+    cout << "Hasil Perkalian = " << (a*b) << endl;
+    cout << "Hasil Pembagian = " << (a/b) << endl;
+
     return 0;
 }
 ```
 #### Output:
-![240302_00h00m06s_screenshot](https://github.com/suxeno/Struktur-Data-Assignment/assets/111122086/6d1727a8-fb77-4ecf-81ff-5de9386686b7)
+<img width="1119" height="383" alt="image" src="https://github.com/user-attachments/assets/7721cadd-19dd-4f10-9c9f-31937c54fcdd" />
 
-Kode di atas digunakan untuk mencetak teks "ini adalah file code guided praktikan" ke layar menggunakan function cout untuk mengeksekusi nya.
+Program ini digunakan untuk menghitung **operasi aritmatika dasar** pada dua bilangan. Pengguna diminta memasukkan dua angka bertipe `float`, kemudian program menampilkan hasil penjumlahan, pengurangan, perkalian, dan pembagian dari kedua angka tersebut. Karena menggunakan tipe data `float`, hasil yang ditampilkan dapat berupa bilangan desimal. Program ini menunjukkan penerapan sederhana operator aritmatika pada input dari pengguna.
+
 
 #### Full code Screenshot:
-![240309_10h21m35s_screenshot](https://github.com/suxeno/Struktur-Data-Assignment/assets/111122086/41e9641c-ad4e-4e50-9ca4-a0215e336b04)
+<img width="2560" height="1600" alt="image" src="https://github.com/user-attachments/assets/57d5823e-ffd1-4990-bcb8-cedb95660deb" />
+
 
 
 ## Kesimpulan
