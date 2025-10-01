@@ -217,7 +217,7 @@ Program ini digunakan untuk menghitung **operasi aritmatika dasar** pada dua bil
 #### Full code Screenshot:
 <img width="2560" height="1600" alt="image" src="https://github.com/user-attachments/assets/57d5823e-ffd1-4990-bcb8-cedb95660deb" />
 
-### 1. SOAL.2
+### 2. SOAL.2
 <img width="1644" height="350" alt="image" src="https://github.com/user-attachments/assets/67789612-9197-4ab8-b5e0-4fa0468c76a6" />
 
 ```c++
@@ -270,7 +270,7 @@ Program ini digunakan untuk mengubah angka menjadi tulisan dalam bahasa Indonesi
 ### FULL CODE SCREENSHOT
 <img width="2560" height="1600" alt="image" src="https://github.com/user-attachments/assets/39f66852-5d16-45c5-8dde-55a23c9d0161" />
 
-### 1. SOAL.3
+### 3. SOAL.3
 <img width="1174" height="461" alt="image" src="https://github.com/user-attachments/assets/377c21e1-541b-4445-bcda-35847e3ea5b7" />
 
 ```C++
