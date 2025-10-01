@@ -76,6 +76,29 @@ int main() {
 ```
 Program tersebut untuk menunjukkan cara kerja operator aritmatika dan operator perbandingan dalam C++. Program meminta pengguna memasukkan dua bilangan, lalu menampilkan hasil operasi aritmatika seperti penjumlahan, pengurangan, perkalian, pembagian, dan modulus. Karena menggunakan tipe data int, hasil pembagian akan dibulatkan ke bilangan bulat. Setelah itu, program menampilkan hasil perbandingan dua bilangan dengan operator lebih besar, lebih kecil, sama dengan, maupun tidak sama dengan. Hasil perbandingan ditampilkan dalam bentuk 1 jika benar (true) dan 0 jika salah (false). Dengan demikian, program ini memberikan gambaran sederhana tentang penggunaan operator dasar dalam C++.
 
+### 4. PERCABANGAN
+```C++
+#include <iostream>
+using namespace std;
+
+int main() {
+     // 4. Percabangan
+     int angka1 = 10;
+     int angka2 = 20;
+     // percabangan if else
+     if (angka1 > angka2) {
+          cout << "Angka1 lebih besar dari angka2" << endl;
+     } else if (angka1 < angka2) {
+          cout << "Angka1 lebih kecil dari angka2" << endl;
+     } else {
+          cout << "Angka1 sama dengan angka2" << endl;
+     }
+}
+```
+Program di atas menunjukkan penggunaan percabangan if-else. Dua variabel angka1 = 10 dan angka2 = 20 dibandingkan. Jika angka1 lebih besar dari angka2, maka ditampilkan pesan sesuai kondisi. Jika lebih kecil, tampil pesan "Angka1 lebih kecil dari angka2". Jika nilainya sama, tampil pesan "Angka1 sama dengan angka2"
+
+### 5. PERULANGAN FOR
+```C++
 
 
 ## Unguided 
