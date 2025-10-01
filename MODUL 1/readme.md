@@ -99,6 +99,31 @@ Program di atas menunjukkan penggunaan percabangan if-else. Dua variabel angka1 
 
 ### 5. PERULANGAN FOR
 ```C++
+#include <iostream>
+
+using namespace std;
+
+int main() {
+    int i;
+    int j;
+
+    for (int i = 0; i <= 10; i++) {
+        cout << i << "-" ;
+    }
+
+    cout << endl;
+
+    for (int j = 20; j >= 10; j--) {
+        cout << j << "-" ;
+    }
+
+    return 0;
+}
+```
+Program tersebut menerapkan struktur perulangan for dalam C++. Perulangan pertama for (int i = 0; i <= 10; i++) digunakan untuk menampilkan deret bilangan dari 0 sampai dengan 10 secara berurutan naik, dengan setiap angka dipisahkan oleh tanda hubung (-). Setelah itu, perintah cout << endl; digunakan untuk membuat baris baru. perulangan kedua for (int j = 20; j >= 10; j--) menampilkan deret bilangan dari 20 hingga 10 secara berurutan turun, juga dengan pemisah tanda hubung. maka, program ini menunjukkan cara perulangan for dengan sempurna 
+
+### 6. WHILE DO
+```C++
 
 
 ## Unguided 
