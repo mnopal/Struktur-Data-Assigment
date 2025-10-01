@@ -23,6 +23,26 @@ Kode di atas digunakan untuk mencetak teks "Hello World!!" ke layar menggunakan 
 
 ### 2. INPUT OUTPUT
 ```C++
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n;
+    const float pi = 3.14;
+
+    cout << "masukan angka: ";
+    cin >> n;
+
+    cout << "angka dikeluarkan: " << n << endl;
+    cout << "nilai konstanta pi: " << pi << endl;
+    return 0;
+
+}
+```
+memiliki variable constant pi dengan nilai 3.14 dan ber type data float, memungkinkan agar user bisa enginput nilai dari suatu n dan cout << berfungsi sebagai output dari variabel
+
+### 3. OPERATOR C++
+```C++
 
 ## Unguided 
 
