@@ -1,4 +1,4 @@
-# <h1 align="center">Laporan Praktikum Modul Pengenalan Bahasa C++ (1)</h1>
+ <h1 align="center">Laporan Praktikum Modul Pengenalan Bahasa C++ (1)</h1>
 <p align="center">MUHAMMAD NAUFAL</p>
 
 ## Dasar Teori
@@ -224,10 +224,106 @@ Program ini digunakan untuk menghitung **operasi aritmatika dasar** pada dua bil
 #### Full code Screenshot:
 <img width="2560" height="1600" alt="image" src="https://github.com/user-attachments/assets/57d5823e-ffd1-4990-bcb8-cedb95660deb" />
 
+### 1. SOAL.2
+<img width="1644" height="350" alt="image" src="https://github.com/user-attachments/assets/67789612-9197-4ab8-b5e0-4fa0468c76a6" />
+
+```c++
+#include <iostream>
+#include <string>
+using namespace std;
+
+string angkaKeTulisan(int n) {
+    string satuan[] = {"nol", "satu", "dua", "tiga", "empat", "lima",
+                       "enam", "tujuh", "delapan", "sembilan", "sepuluh",
+                       "sebelas"};
+
+    if (n < 12)
+        return satuan[n];
+    else if (n < 20)
+        return satuan[n - 10] + " belas";
+    else if (n < 100) {
+        int puluh = n / 10;
+        int sisa = n % 10;
+        string hasil = satuan[puluh] + " puluh";
+        if (sisa != 0)
+            hasil += " " + satuan[sisa];
+        return hasil;
+    } else if (n == 100) {
+        return "seratus";
+    }
+    return "error";
+}
+
+int main() {
+    int angka;
+    cout << "Masukkan angka (0-100): ";
+    cin >> angka;
+
+    if (angka < 0 || angka > 100) {
+        cout << "error" << endl;
+    } else {
+        cout << angka << " : " << angkaKeTulisan(angka) << endl;
+    }
+
+    return 0;
+}
+```
+
+### OUTPUT
+<img width="1190" height="184" alt="image" src="https://github.com/user-attachments/assets/1fac1a21-fa86-4241-ab18-6f2fc3e45b06" />
+
+Program ini digunakan untuk mengubah angka menjadi tulisan dalam bahasa Indonesia untuk rentang 0 sampai 100. Fungsi angkaKeTulisan(int n) memanfaatkan array satuan[] berisi kata dari "nol" sampai "sebelas". tapi jika angka kurang dari 12, langsung dikembalikan sesuai array. Jika angka kurang dari 20, output berupa kata pada indeks n-10 ditambah kata "belas". Untuk angka puluhan (20–99), angka dibagi menjadi puluhan dan satuan. Kata "puluh" ditambahkan sesuai nilai puluh, dan jika ada sisa satuan, maka ditambahkan lagi. Jika angka sama dengan 100, hasilnya "seratus". Selain itu, program akan menampilkan "error".
+
+### FULL CODE SCREENSHOT
+<img width="2560" height="1600" alt="image" src="https://github.com/user-attachments/assets/39f66852-5d16-45c5-8dde-55a23c9d0161" />
+
+### 1. SOAL.3
+<img width="1174" height="461" alt="image" src="https://github.com/user-attachments/assets/377c21e1-541b-4445-bcda-35847e3ea5b7" />
+
+```C++
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n;
+    cout << "input: ";
+    cin >> n;
+
+    cout << "output:" << endl;
+
+    for (int i = n; i >= 0; i--) {
+        for (int s = 0; s < n - i; s++) {
+            cout << " ";
+        }
+
+        for (int j = i; j >= 1; j--) {
+            cout << j;
+        }
+
+        cout << "*";
+
+        for (int j = 1; j <= i; j++) {
+            cout << j;
+        }
+
+        cout << endl;
+    }
+
+    return 0;
+}
+```
+
+### OUTPUT
+<img width="840" height="303" alt="image" src="https://github.com/user-attachments/assets/5305ac9d-cabb-4a6a-978c-5772d497fe58" />
+
+Program di atas menunjukkan output berbentuk **segitiga simetris atau sama sisi** dengan memanfaatkan **perulangan `for`** sesuai input yang dimasukkan oleh pengguna. Nilai input `n` menentukan tinggi segitiga sekaligus jumlah baris yang akan dicetak. Setiap baris dibentuk melalui beberapa perulangan `for`, yaitu perulangan untuk mencetak spasi agar pola terlihat rata, perulangan untuk mencetak angka menurun dari `i` ke 1, pencetakan tanda bintang `*` sebagai titik tengah, serta perulangan untuk mencetak angka menaik dari 1 ke `i`. Kombinasi seluruh perulangan tersebut menghasilkan pola segitiga simetris dengan angka yang mengapit tanda bintang di tengah. Dengan demikian, program ini memperlihatkan bagaimana **struktur perulangan bersarang** dapat dimanfaatkan untuk membentuk pola yang teratur dan simetris.
+
+### FULL CODE SCREENSHOT
+<img width="2560" height="1600" alt="image" src="https://github.com/user-attachments/assets/77990b0d-084b-471c-896d-d51f77dd2e22" />
 
 
 ## Kesimpulan
-Ringkasan dan interpretasi pandangan kalia dari hasil praktikum dan pembelajaran yang didapat[1].
+Ringkasan dan interpretasi saya pada pembelajaran minggu ini adalah saya belajar tentang basic basic yang ada di bahasa c++ yang saya belum ketahui sebelumnya, dan saya juga masih tahap belajar juga untuk mengetahui bahsa c++ lebih dalam lagi dan macam macam seperti deklarasi variabel, tipe data, konstanta, for loop, do-while, struktur, dan juga di modul ini saya belajar syntax dari bahasa c++ juga.
 
 ## Referensi
 [1] I. Holm, Narrator, and J. Fullerton-Smith, Producer, How to Build a Human [DVD]. London: BBC; 2002.
