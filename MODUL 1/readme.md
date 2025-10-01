@@ -1,21 +1,22 @@
 # <h1 align="center">Laporan Praktikum Modul Pengenalan Bahasa C++ (1)</h1>
-<p align="center">Arvinanto Bahtiar</p>
+<p align="center">MUHAMMAD NAUFAL</p>
 
 ## Dasar Teori
 
-Berikan penjelasan teori terkait materi modul ini dengan bahasa anda sendiri serta susunan yang terstruktur per topiknya.
+Bahasa C++ adalah salah satu bahasa pemrograman tingkat tinggi yang sangat populer dan banyak digunakan di berbagai bidang. C++ juga adalah bahasa pemrograman berorientasi objek (Object-Oriented Programming / OOP) yang dikembangkan oleh Bjarne Stroustrup pada awal tahun 1980-an sebagai pengembangan dari bahasa C. Nama "C++" sendiri melambangkan peningkatan dari "C" (karena ++ adalah operator increment dalam C). Selain itu C++ adalah bahasa pemrograman tingkat tinggi yang mendukung paradigma berorientasi-objek, generik, dan procedural. Dibuat oleh Bjarne Stroustrup sebagai perluasan C, C++ menekankan performa, kontrol memori, dan fleksibilitas — sehingga dipakai luas pada sistem operasi, game, embedded, keuangan performa tinggi, compiler, dll.
 
 ## Guided 
 
-### 1. [Nama Topik]
+### 1. HELLO WORD
 
 ```C++
-#include <iostream>
+#include <iostream> 
 using namespace std;
 
 int main() {
-    cout << "ini adalah file code guided praktikan" << endl;
-    return 0;
+     // 1. testing basic
+     cout << "Hello World!!";
+}
 }
 ```
 Kode di atas digunakan untuk mencetak teks "ini adalah file code guided praktikan" ke layar menggunakan function cout untuk mengeksekusi nya.
