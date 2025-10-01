@@ -124,6 +124,32 @@ Program tersebut menerapkan struktur perulangan for dalam C++. Perulangan pertam
 
 ### 6. WHILE DO
 ```C++
+#include <iostream>
+using namespace std;
+
+int main() {
+    int i = 0;
+    int j = 20;
+
+    while (i <= 10) {
+        cout << i << "-";
+        i++;
+    }
+
+    cout << endl;
+
+    do {
+        cout << j << "-";
+        j++;
+    } while (j <=10);
+
+    return 0;
+}
+```
+Program di atas menunjukkan perulangan while dan do-while. Perulangan while mencetak angka dari 0 sampai 10 dengan tanda hubung. Sedangkan do-while mencetak angka 20 sekali saja, karena meskipun kondisi j <= 10 salah, blok do tetap dijalankan minimal satu kali
+
+### 7. STRUKTUR
+```C++
 
 
 ## Unguided 
