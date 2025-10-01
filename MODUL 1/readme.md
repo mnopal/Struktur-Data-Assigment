@@ -150,7 +150,42 @@ Program di atas menunjukkan perulangan while dan do-while. Perulangan while menc
 
 ### 7. STRUKTUR
 ```C++
+#include <iostream>
+#include <string>
+using namespace std;
+struct Mahasiswa {
+    string nama;
+    int umur;
+};
 
+int main() {
+    int jumlah;
+
+    cout << "masukkan jumlah mahasiswa: ";
+    cin >> jumlah;
+
+    Mahasiswa mhs[jumlah];
+
+    //input data menggunakan loop
+    for (int i = 0; i < jumlah; i++) {
+        cout << "\nMahasiswa ke-" << i + 1 << endl;
+        cout << "Nama: ";
+        cin >> mhs[i].nama;
+        cout << "Umur: ";
+        cin >> mhs[i].umur;
+    }
+    
+    //tampilkan data
+    cout << "\n === Data Mahasiswa ===\n";
+    for (int i = 0; i < jumlah; i++) {
+        cout << "Mahasiswa ke-" << i+1 
+             << "| Nama: |" << mhs[i].nama
+             << "| Umur: |" << mhs[i].umur << endl;
+    }
+    return 0;
+}
+```
+Program tersebut merupakan struktur data struct di C++ dengan contoh data mahasiswa. Pertama, didefinisikan sebuah struct Mahasiswa yang memiliki dua atribut, yaitu nama ber type data string dan umur ber type data int. Pada fungsi main, pengguna diminta memasukkan jumlah mahasiswa yang ingin dicatat. Setelah itu, dibuat array mhs[jumlah] untuk menampung data mahasiswa sesuai jumlah yang dimasukkan.
 
 ## Unguided 
 
