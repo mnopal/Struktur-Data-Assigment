@@ -19,7 +19,10 @@ int main() {
 }
 }
 ```
-Kode di atas digunakan untuk mencetak teks "ini adalah file code guided praktikan" ke layar menggunakan function cout untuk mengeksekusi nya.
+Kode di atas digunakan untuk mencetak teks "Hello World!!" ke layar menggunakan function cout untuk mengeksekusi nya.
+
+### 2. INPUT OUTPUT
+```C++
 
 ## Unguided 
 
