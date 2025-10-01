@@ -43,6 +43,40 @@ memiliki variable constant pi dengan nilai 3.14 dan ber type data float, memungk
 
 ### 3. OPERATOR C++
 ```C++
+#include <iostream>
+
+using namespace std;
+
+int main() {
+    int a;
+    int b;
+
+    cout << "Masukkan angka1: ";
+    cin >> a;
+    cout << "Masukkan angka2: ";
+    cin >> b;
+
+    //operator aritmatika
+    cout << "a + b = " << (a+b) << endl;
+    cout << "a - b = " << (a-b) << endl;
+    cout << "a * b = " << (a*b) << endl;
+    cout << "a / b = " << (a/b) << endl;
+    cout << "a % b = " << (a%b) << endl;
+
+    //operator logika 
+    cout << "a > b = " << (a>b) << endl;
+    cout << "a < b = " << (a<b) << endl;
+    cout << "a >= b = " << (a>=b) << endl;
+    cout << "a <= b = " << (a<=b) << endl;
+    cout << "a == b = " << (a==b) << endl;
+    cout << "a != b = " << (a!=b) << endl;
+
+    return 0;
+}
+```
+Program tersebut untuk menunjukkan cara kerja operator aritmatika dan operator perbandingan dalam C++. Program meminta pengguna memasukkan dua bilangan, lalu menampilkan hasil operasi aritmatika seperti penjumlahan, pengurangan, perkalian, pembagian, dan modulus. Karena menggunakan tipe data int, hasil pembagian akan dibulatkan ke bilangan bulat. Setelah itu, program menampilkan hasil perbandingan dua bilangan dengan operator lebih besar, lebih kecil, sama dengan, maupun tidak sama dengan. Hasil perbandingan ditampilkan dalam bentuk 1 jika benar (true) dan 0 jika salah (false). Dengan demikian, program ini memberikan gambaran sederhana tentang penggunaan operator dasar dalam C++.
+
+
 
 ## Unguided 
 
