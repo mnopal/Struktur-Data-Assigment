@@ -2,17 +2,15 @@
 using namespace std;
 
 int main() {
-    int i;
-    int j;
-
-     for (int i = 0; i <=10; i++) {
-        cout << i << "-";
+     // 4. Percabangan
+     int angka1 = 10;
+     int angka2 = 20;
+     // percabangan if else
+     if (angka1 > angka2) {
+          cout << "Angka1 lebih besar dari angka2" << endl;
+     } else if (angka1 < angka2) {
+          cout << "Angka1 lebih kecil dari angka2" << endl;
+     } else {
+          cout << "Angka1 sama dengan angka2" << endl;
      }
-
-     cout << endl;
-
-     for (int j = 20; j >= 10; j--) {
-        cout << j << "-";
-     }
-     return 0;
 }
