@@ -82,10 +82,8 @@ Program tersebut untuk menunjukkan cara kerja operator aritmatika dan operator p
 using namespace std;
 
 int main() {
-     // 4. Percabangan
      int angka1 = 10;
      int angka2 = 20;
-     // percabangan if else
      if (angka1 > angka2) {
           cout << "Angka1 lebih besar dari angka2" << endl;
      } else if (angka1 < angka2) {
@@ -110,7 +108,6 @@ int main() {
     for (int i = 0; i <= 10; i++) {
         cout << i << "-" ;
     }
-
     cout << endl;
 
     for (int j = 20; j >= 10; j--) {
@@ -166,7 +163,6 @@ int main() {
 
     Mahasiswa mhs[jumlah];
 
-    //input data menggunakan loop
     for (int i = 0; i < jumlah; i++) {
         cout << "\nMahasiswa ke-" << i + 1 << endl;
         cout << "Nama: ";
@@ -175,7 +171,6 @@ int main() {
         cin >> mhs[i].umur;
     }
     
-    //tampilkan data
     cout << "\n === Data Mahasiswa ===\n";
     for (int i = 0; i < jumlah; i++) {
         cout << "Mahasiswa ke-" << i+1 
@@ -200,13 +195,11 @@ int main(){
     float a;
     float b;
 
-    //Inputan
      cout << "masukkan angka 1: " << endl;
      cin >> a;
      cout << "masukkan angka 2: " << endl;
      cin >> b;
 
-    //Operasi Dasar
     cout << "Hasil Penjumlahan = " << (a+b) << endl;
     cout << "Hasil Pengurangan = " << (a-b) << endl;
     cout << "Hasil Perkalian = " << (a*b) << endl;
