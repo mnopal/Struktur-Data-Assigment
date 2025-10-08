@@ -208,7 +208,7 @@ int main() {
 <img width="1448" height="835" alt="image" src="https://github.com/user-attachments/assets/ccdc0e32-01c2-4dc1-a459-35e4113bcfe8" />
 
 
-Program ini digunakan untuk menghitung **operasi aritmatika dasar** pada dua bilangan. Pengguna diminta memasukkan dua angka bertipe `float`, kemudian program menampilkan hasil penjumlahan, pengurangan, perkalian, dan pembagian dari kedua angka tersebut. Karena menggunakan tipe data `float`, hasil yang ditampilkan dapat berupa bilangan desimal. Program ini menunjukkan penerapan sederhana operator aritmatika pada input dari pengguna.
+Program ini memperlihatkan cara melakukan operasi dasar pada matriks 3×3 di C++. menggunakan array dua dimensi untuk menyimpan data, Perulangan bersarang (for di dalam for) untuk mengakses elemen matriks, Menampilkan hasil penjumlahan, pengurangan, dan perkalian secara terpisah dengan tampilan rapi.
 
 
 #### Full code Screenshot:
