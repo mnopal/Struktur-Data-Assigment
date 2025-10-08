@@ -149,37 +149,71 @@ Berbeda dengan pointer, reference tidak menyimpan alamat memori, tetapi menjadi 
 ## Unguided 
 
 ### 1. SOAL.1
-<img width="1722" height="166" alt="image" src="https://github.com/user-attachments/assets/040c4439-cecb-4bf5-8abc-751af905e878" />
+<img width="1750" height="144" alt="image" src="https://github.com/user-attachments/assets/008e026c-eb5f-4ad4-9b50-633ba153f013" />
 
 ```C++
 #include <iostream>
 using namespace std;
 
-int main(){
-    float a;
-    float b;
+int main() {
+    int A[3][3], B[3][3], C[3][3];
 
-     cout << "masukkan angka 1: " << endl;
-     cin >> a;
-     cout << "masukkan angka 2: " << endl;
-     cin >> b;
+    cout << "Buat Matrix A:\n";
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+            cin >> A[i][j];
+        }
+    }
 
-    cout << "Hasil Penjumlahan = " << (a+b) << endl;
-    cout << "Hasil Pengurangan = " << (a-b) << endl;
-    cout << "Hasil Perkalian = " << (a*b) << endl;
-    cout << "Hasil Pembagian = " << (a/b) << endl;
+    cout << "Buat Matrix B:\n";
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+            cin >> B[i][j];
+        }
+    }
+
+    cout << "\nHasil Penjumlahan:\n";
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+            cout << A[i][j] + B[i][j] << "\t";
+        }
+        cout << endl;
+    }
+
+    cout << "\nHasil Pengurangan:\n";
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+            cout << A[i][j] - B[i][j] << "\t";
+        }
+        cout << endl;
+    }
+
+    cout << "\nHasil Perkalian:\n";
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+            C[i][j] = 0;
+            for (int k = 0; k < 3; k++) {
+                C[i][j] += A[i][k] * B[k][j];
+            }
+            cout << C[i][j] << "\t";
+        }
+        cout << endl;
+    }
 
     return 0;
 }
+
 ```
 #### Output:
-<img width="1119" height="383" alt="image" src="https://github.com/user-attachments/assets/7721cadd-19dd-4f10-9c9f-31937c54fcdd" />
+<img width="1448" height="835" alt="image" src="https://github.com/user-attachments/assets/ccdc0e32-01c2-4dc1-a459-35e4113bcfe8" />
+
 
 Program ini digunakan untuk menghitung **operasi aritmatika dasar** pada dua bilangan. Pengguna diminta memasukkan dua angka bertipe `float`, kemudian program menampilkan hasil penjumlahan, pengurangan, perkalian, dan pembagian dari kedua angka tersebut. Karena menggunakan tipe data `float`, hasil yang ditampilkan dapat berupa bilangan desimal. Program ini menunjukkan penerapan sederhana operator aritmatika pada input dari pengguna.
 
 
 #### Full code Screenshot:
-<img width="2560" height="1600" alt="image" src="https://github.com/user-attachments/assets/57d5823e-ffd1-4990-bcb8-cedb95660deb" />
+<img width="2560" height="1600" alt="image" src="https://github.com/user-attachments/assets/bbc6b530-5162-4265-96c6-f3586b9100e0" />
+
 
 ### 2. SOAL.2
 <img width="1644" height="350" alt="image" src="https://github.com/user-attachments/assets/67789612-9197-4ab8-b5e0-4fa0468c76a6" />
