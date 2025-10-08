@@ -216,105 +216,173 @@ Program ini memperlihatkan cara melakukan operasi dasar pada matriks 3×3 di C++
 
 
 ### 2. SOAL.2
-<img width="1644" height="350" alt="image" src="https://github.com/user-attachments/assets/67789612-9197-4ab8-b5e0-4fa0468c76a6" />
+<img width="1781" height="135" alt="image" src="https://github.com/user-attachments/assets/05cd34aa-56b1-4cf2-8a10-27aa90a1607c" />
 
 ```c++
 #include <iostream>
-#include <string>
 using namespace std;
 
-string angkaKeTulisan(int n) {
-    string satuan[] = {"nol", "satu", "dua", "tiga", "empat", "lima",
-                       "enam", "tujuh", "delapan", "sembilan", "sepuluh",
-                       "sebelas"};
+// Fungsi untuk menukar tiga nilai menggunakan POINTER
+void tukarPointer(int *x, int *y, int *z) {
+    int temp = *x;
+    *x = *y;
+    *y = *z;
+    *z = temp;
+}
 
-    if (n < 12)
-        return satuan[n];
-    else if (n < 20)
-        return satuan[n - 10] + " belas";
-    else if (n < 100) {
-        int puluh = n / 10;
-        int sisa = n % 10;
-        string hasil = satuan[puluh] + " puluh";
-        if (sisa != 0)
-            hasil += " " + satuan[sisa];
-        return hasil;
-    } else if (n == 100) {
-        return "seratus";
-    }
-    return "error";
+// Fungsi untuk menukar tiga nilai menggunakan REFERENCE
+void tukarReference(int &x, int &y, int &z) {
+    int temp = x;
+    x = y;
+    y = z;
+    z = temp;
 }
 
 int main() {
-    int angka;
-    cout << "Masukkan angka (0-100): ";
-    cin >> angka;
+    // untuk pointer
+    int a = 1, b = 2, c = 3;
+    cout << "pointer" << "(nilai sebelum tukar): " << endl;
+    cout << "a = " << a << ", b = " << b << ", c = " << c << endl;
 
-    if (angka < 0 || angka > 100) {
-        cout << "error" << endl;
-    } else {
-        cout << angka << " : " << angkaKeTulisan(angka) << endl;
-    }
+    tukarPointer(&a, &b, &c);
+
+    cout << "pointer" << "(nilai setelah tukar): " << endl;
+    cout << "a = " << a << ", b = " << b << ", c = " << c << endl << endl;
+
+
+    //  untuk reference 
+    int a2 = 1, b2 = 2, c2 = 3;
+    cout << "reference" << "(nilai sebelum tukuar): " << endl;
+    cout << "a2 = " << a2 << ", b2 = " << b2 << ", c2 = " << c2 << endl;
+
+    tukarReference(a2, b2, c2);
+
+    cout << "reference" << "(nilai sesudah proses): " << endl;
+    cout << "a2 = " << a2 << ", b2 = " << b2 << ", c2 = " << c2 << endl;
 
     return 0;
 }
+
 ```
 
 ### OUTPUT
-<img width="1190" height="184" alt="image" src="https://github.com/user-attachments/assets/1fac1a21-fa86-4241-ab18-6f2fc3e45b06" />
+<img width="1391" height="410" alt="image" src="https://github.com/user-attachments/assets/751fd867-4d24-4898-9983-d319cdfd13e3" />
 
-Program ini digunakan untuk mengubah angka menjadi tulisan dalam bahasa Indonesia untuk rentang 0 sampai 100. Fungsi angkaKeTulisan(int n) memanfaatkan array satuan[] berisi kata dari "nol" sampai "sebelas". tapi jika angka kurang dari 12, langsung dikembalikan sesuai array. Jika angka kurang dari 20, output berupa kata pada indeks n-10 ditambah kata "belas". Untuk angka puluhan (20–99), angka dibagi menjadi puluhan dan satuan. Kata "puluh" ditambahkan sesuai nilai puluh, dan jika ada sisa satuan, maka ditambahkan lagi. Jika angka sama dengan 100, hasilnya "seratus". Selain itu, program akan menampilkan "error".
+Program ini memperlihatkan dua konsep penting dalam C++:
+-Pointer → Mengakses dan memodifikasi data melalui alamat memori (*x, &a).
+-Reference → Mengakses dan memodifikasi data secara langsung dengan nama lain dari variabel yang sama (int &x).
+keduanya dapat mengubah nilai asli dari variabel yang dikirim ke fungsi, tapi reference lebih sederhana digunakan, sedangkan pointer lebih fleksibel dalam menggunakan alamat memori.
 
 ### FULL CODE SCREENSHOT
-<img width="2560" height="1600" alt="image" src="https://github.com/user-attachments/assets/39f66852-5d16-45c5-8dde-55a23c9d0161" />
+<img width="2560" height="1600" alt="image" src="https://github.com/user-attachments/assets/66654ee9-17d7-4854-a021-b3429794a3f3" />
 
 ### 3. SOAL.3
-<img width="1174" height="461" alt="image" src="https://github.com/user-attachments/assets/377c21e1-541b-4445-bcda-35847e3ea5b7" />
+<img width="1814" height="825" alt="image" src="https://github.com/user-attachments/assets/f17fa8a6-c1fc-4408-b9a4-9bf7d9890732" />
 
 ```C++
 #include <iostream>
 using namespace std;
 
-int main() {
-    int n;
-    cout << "input: ";
-    cin >> n;
-
-    cout << "output:" << endl;
-
-    for (int i = n; i >= 0; i--) {
-        for (int s = 0; s < n - i; s++) {
-            cout << " ";
-        }
-
-        for (int j = i; j >= 1; j--) {
-            cout << j;
-        }
-
-        cout << "*";
-
-        for (int j = 1; j <= i; j++) {
-            cout << j;
-        }
-
-        cout << endl;
+// Fungsi mencari nilai maksimum
+int cariMaksimum(int arr[], int n) {
+    int maks = arr[0];
+    for (int i = 1; i < n; i++) {
+        if (arr[i] > maks)
+            maks = arr[i];
     }
+    return maks;
+}
+
+// Fungsi mencari nilai minimum
+int cariMinimum(int arr[], int n) {
+    int min = arr[0];
+    for (int i = 1; i < n; i++) {
+        if (arr[i] < min)
+            min = arr[i];
+    }
+    return min;
+}
+
+// Prosedur menghitung rata-rata
+void hitungRataRata(int arr[], int n) {
+    float total = 0;
+    for (int i = 0; i < n; i++) {
+        total += arr[i];
+    }
+    cout << "Nilai rata-rata = " << total / n << endl;
+}
+
+int main() {
+    int arrA[] = {11, 8, 5, 7, 12, 26, 3, 54, 33, 55};
+    int n = sizeof(arrA) / sizeof(arrA[0]);
+    int pilihan;
+
+    do {
+        cout << "\n === menu program array ===" << endl;
+        cout << "1. tampilkan isi array" << endl;
+        cout << "2. cari nilai maksimum" << endl;
+        cout << "3. cari nilai minimum" << endl;
+        cout << "4. hitung nilai rata-rata" << endl;
+        cout << "5. keluar" << endl;
+        cout << "pilih menu (1-5): ";
+        cin >> pilihan;
+
+        switch (pilihan) {
+            case 1:
+                cout << "Isi array: ";
+                for (int i = 0; i < n; i++) {
+                    cout << arrA[i] << " ";
+                }
+                cout << endl;
+                break;
+
+            case 2:
+                cout << "Nilai maksimum = " << cariMaksimum(arrA, n) << endl;
+                break;
+
+            case 3:
+                cout << "Nilai minimum = " << cariMinimum(arrA, n) << endl;
+                break;
+
+            case 4:
+                hitungRataRata(arrA, n);
+                break;
+
+            case 5:
+                cout << "Terima kasih telah menggunakan! Program selesai." << endl;
+                break;
+
+            default:
+                cout << "Pilihan tidak valid, monggoh coba lagi." << endl;
+        }
+    } while (pilihan != 5);
 
     return 0;
 }
+
 ```
 
 ### OUTPUT
-<img width="840" height="303" alt="image" src="https://github.com/user-attachments/assets/5305ac9d-cabb-4a6a-978c-5772d497fe58" />
+<img width="1383" height="1024" alt="image" src="https://github.com/user-attachments/assets/d9174664-2662-4de4-bca6-20f9e28cf114" />
 
-Program di atas menunjukkan output berbentuk **segitiga simetris atau sama sisi** dengan memanfaatkan **perulangan `for`** sesuai input yang dimasukkan oleh pengguna. Nilai input `n` menentukan tinggi segitiga sekaligus jumlah baris yang akan dicetak. Setiap baris dibentuk melalui beberapa perulangan `for`, yaitu perulangan untuk mencetak spasi agar pola terlihat rata, perulangan untuk mencetak angka menurun dari `i` ke 1, pencetakan tanda bintang `*` sebagai titik tengah, serta perulangan untuk mencetak angka menaik dari 1 ke `i`. Kombinasi seluruh perulangan tersebut menghasilkan pola segitiga simetris dengan angka yang mengapit tanda bintang di tengah. Dengan demikian, program ini memperlihatkan bagaimana **struktur perulangan bersarang** dapat dimanfaatkan untuk membentuk pola yang teratur dan simetris.
+<img width="1170" height="654" alt="image" src="https://github.com/user-attachments/assets/1e42bde7-442b-432c-9457-f73f0adbad7b" />
+
+
+Program ini berfungsi untuk mengolah data pada array satu dimensi — tepatnya untuk:
+1.Menampilkan isi array
+2.Mencari nilai maksimum
+3.Mencari nilai minimum
+4.Menghitung nilai rata-rata
+Program menggunakan fungsi (function) untuk operasi pencarian nilai dan perhitungan, serta struktur switch–case agar pengguna bisa memilih menu yang diinginkan.
+Program diatas juga memperlihatkan cara menggunakan fungsi dan prosedur untuk mengolah data array satu dimensi.
+Dengan menggunakan switch–case, program menjadi interaktif dan fleksibel, serta user dapat memilih apakah ingin melihat isi array, mencari nilai tertinggi, terendah, atau rata-ratanya.
 
 ### FULL CODE SCREENSHOT
-<img width="2560" height="1600" alt="image" src="https://github.com/user-attachments/assets/77990b0d-084b-471c-896d-d51f77dd2e22" />
+<img width="2560" height="1600" alt="image" src="https://github.com/user-attachments/assets/60e5fc9d-9f96-4db6-91e2-ad70e4479753" />
 
 
 ## Kesimpulan
-Ringkasan dan interpretasi saya pada pembelajaran minggu ini adalah saya belajar tentang basic basic yang ada di bahasa c++ yang saya belum ketahui sebelumnya, dan saya juga masih tahap belajar juga untuk mengetahui bahsa c++ lebih dalam lagi dan macam macam seperti deklarasi variabel, tipe data, konstanta, for loop, do-while, struktur, dan juga di modul ini saya belajar syntax dari bahasa c++ juga.
+ringkasan dari modul ini menunjukkan penerapan array satu dimensi dan penggunaan fungsi serta prosedur dalam bahasa C++. Melalui fungsi cariMaksimum() dan cariMinimum(), program dapat menemukan nilai tertinggi dan terendah dalam array, sedangkan prosedur hitungRataRata() digunakan untuk menghitung rata-rata dari seluruh elemen array. Struktur switch–case dimanfaatkan untuk membuat menu yang memudahkan user memilih operasi yang diinginkan, seperti menampilkan isi array, mencari nilai maksimum, minimum, atau menghitung rata-rata. Secara keseluruhan, program ini melatih pemahaman tentang cara mengolah data array menggunakan fungsi, perulangan, dan percabangan, serta memperkuat konsep dasar dalam bahasa C++.
 
 ## Referensi
 [1] I. Holm, Narrator, and J. Fullerton-Smith, Producer, How to Build a Human [DVD]. London: BBC; 2002.
