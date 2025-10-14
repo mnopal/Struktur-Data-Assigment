@@ -1,9 +1,49 @@
- <h1 align="center">Laporan Praktikum Modul Pengenalan Bahasa C++ (2)</h1>
+ <h1 align="center">Laporan Praktikum Modul Abstract data type </h1>
 <p align="center">MUHAMMAD NAUFAL</p>
 
 ## Dasar Teori
 
-Bahasa C++ adalah salah satu bahasa pemrograman tingkat tinggi yang sangat populer dan banyak digunakan di berbagai bidang. C++ juga adalah bahasa pemrograman berorientasi objek (Object-Oriented Programming / OOP) yang dikembangkan oleh Bjarne Stroustrup pada awal tahun 1980-an sebagai pengembangan dari bahasa C. Dalam modul ini kita belajar tentang array dan pointer. Adapun pengertian array dalam C++ adalah sekumpulan data dengan tipe yang sama yang disimpan berurutan dalam memori dan diakses melalui indeks. Array memudahkan penyimpanan serta pengolahan data dalam jumlah banyak, misalnya menampilkan, menjumlahkan, atau mencari nilai tertentu dengan bantuan perulangan.Dan pointer adalah variabel yang menyimpan alamat memori dari variabel lain. Dengan pointer, programmer dapat mengakses dan memanipulasi data secara langsung melalui alamat tersebut.
+ADT adalah definisi tipe data (TYPE) beserta kumpulan operasi dasar (PRIMITIF) yang dapat dilakukan terhadap tipe tersebut. ADT bersifat abstrak dan statik, artinya hanya mendefinisikan apa yang bisa dilakukan, bukan bagaimana cara dilakukan.
+
+Komponen Utama ADT:
+
+1.TYPE (Tipe Data) – struktur data yang didefinisikan oleh pengguna.
+Contoh: WAKTU terdiri dari JAM dan TANGGAL, atau GARIS terdiri dari dua POINT.
+
+2.PRIMITIF (Operasi Dasar) – fungsi/prosedur yang bisa dilakukan terhadap TYPE tersebut, meliputi:
+
+ -Konstruktor/Kreator → membuat objek baru (Make...)
+ 
+ -Selector → mengambil komponen dari objek (Get...)
+ 
+ -Mutator/Modifier → mengubah nilai komponen (Set...)
+ 
+ -Validator → memeriksa validitas nilai
+ 
+ -Destruktor → menghapus objek dan membebaskan memori
+ 
+ -Baca/Tulis → interaksi dengan input/output
+ 
+ -Operator Relasional & Aritmatika → membandingkan atau mengoperasikan objek
+ 
+ -Konversi → ubah antara tipe dasar dan tipe ADT
+ 
+ Struktur Implementasi ADT :
+
+1.ADT biasanya terdiri dari dua modul utama dan satu modul driver:
+
+2.Header (.h)
+Berisi spesifikasi tipe dan deklarasi fungsi/prosedur (tanpa implementasi).
+
+3.Body (.c / .cpp)
+Berisi realisasi dari fungsi/prosedur sesuai spesifikasi.
+
+4.Driver (main program)
+Digunakan untuk menguji dan menggunakan ADT.
+
+jadi ADT mendefinisikan data dan operasi secara konseptual (abstrak) tanpa memikirkan detail implementasinya.
+Dalam implementasi (misalnya di C/C++), ADT diterjemahkan menjadi struct + fungsi/prosedur,
+agar kode menjadi terstruktur, modular, dan mudah dipelihara.
 
 ## Guided 
 
