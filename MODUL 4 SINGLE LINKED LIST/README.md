@@ -3,48 +3,27 @@
 
 ## Dasar Teori
 
-ADT adalah definisi tipe data (TYPE) beserta kumpulan operasi dasar (PRIMITIF) yang dapat dilakukan terhadap tipe tersebut. ADT bersifat abstrak dan statik, artinya hanya mendefinisikan apa yang bisa dilakukan, bukan bagaimana cara dilakukan.
+Singly Linked List adalah struktur data dinamis yang terdiri dari serangkaian elemen data yang saling terhubung menggunakan pointer.
 
-Komponen Utama ADT:
+Struktur Dasar:
 
-1.TYPE (Tipe Data) – struktur data yang didefinisikan oleh pengguna.
-Contoh: WAKTU terdiri dari JAM dan TANGGAL, atau GARIS terdiri dari dua POINT.
+- Setiap elemen (Node) memiliki dua bagian: Data (info) dan Successor (next).
 
-2.PRIMITIF (Operasi Dasar) – fungsi/prosedur yang bisa dilakukan terhadap TYPE tersebut, meliputi:
+- Linked List ini hanya memiliki satu arah pointer (next) dan hanya mendukung pembacaan maju.
 
- -Konstruktor/Kreator → membuat objek baru (Make...)
- 
- -Selector → mengambil komponen dari objek (Get...)
- 
- -Mutator/Modifier → mengubah nilai komponen (Set...)
- 
- -Validator → memeriksa validitas nilai
- 
- -Destruktor → menghapus objek dan membebaskan memori
- 
- -Baca/Tulis → interaksi dengan input/output
- 
- -Operator Relasional & Aritmatika → membandingkan atau mengoperasikan objek
- 
- -Konversi → ubah antara tipe dasar dan tipe ADT
- 
- Struktur Implementasi ADT :
+- Elemen pertama ditunjuk oleh first/head, dan elemen terakhir menunjuk ke Nil/NULL.
 
-1.ADT biasanya terdiri dari dua modul utama dan satu modul driver:
+Operasi Primitif Utama
+Operasi-operasi dasar (ADT) pada Singly Linked List meliputi:
 
-2.Header (.h)
-Berisi spesifikasi tipe dan deklarasi fungsi/prosedur (tanpa implementasi).
 
-3.Body (.c / .cpp)
-Berisi realisasi dari fungsi/prosedur sesuai spesifikasi.
+- Manajemen Memori: Alokasi (new/malloc) dan Dealokasi (delete/free).
 
-4.Driver (main program)
-Digunakan untuk menguji dan menggunakan ADT.
+- Modifikasi (Insert): Menyisipkan elemen di awal (InsertFirst), akhir (InsertLast), atau setelah node tertentu (InsertAfter).
 
-jadi ADT mendefinisikan data dan operasi secara konseptual (abstrak) tanpa memikirkan detail implementasinya.
-Dalam implementasi (misalnya di C/C++), ADT diterjemahkan menjadi struct + fungsi/prosedur,
-agar kode menjadi terstruktur, modular, dan mudah dipelihara.
+- Penghapusan (Delete): Menghapus elemen di awal (DeleteFirst), akhir (DeleteLast), atau setelah node tertentu (DeleteAfter).
 
+Akses: Mencakup CreateList, isEmpty, dan printInfo (untuk menampilkan isi list).
 ## Guided 
 
 ### 1. Mahasiswa.h
@@ -377,4 +356,3 @@ Pada fungsi main(), program melakukan inisialisasi dua array dua dimensi beserta
 kesimpulan pada minggu ketiga praktikum, saya memperoleh pemahaman tentang konsep Abstract Data Type (ADT) dalam C++. ADT membantu membuat program lebih rapi dan terstruktur dengan memisahkan data dan fungsi ke dalam file yang berbeda, sehingga kode menjadi lebih mudah dipahami dan dikelola. Melalui praktikum daring, saya belajar cara membagi program ke dalam file header (.h) dan source (.cpp), yang meningkatkan kemampuan saya dalam menulis program C++ yang lebih modular, terorganisir, dan mudah dikembangkan.
 ## Referensi
 [1] I. Holm, Narrator, and J. Fullerton-Smith, Producer, How to Build a Human [DVD]. London: BBC; 2002.
-
