@@ -47,143 +47,60 @@ agar kode menjadi terstruktur, modular, dan mudah dipelihara.
 
 ## Guided 
 
-### 1. ARRAY
+### 1. Mhasiswa.h
 
 ```C++
+#ifndef MAHASISWA_H_INCLUDED
+#define MAHASISWA_H_INCLUDED
+
+struct  mahasiswa {
+    /* data */
+    char nim[10];
+    int nilai1, nilai2;
+};
+
+void inputMhs(mahasiswa &m);
+float rata2(mahasiswa m);
+#endif // MAHASISWA_H_INCLUDED
+```
+Program ini bertindak sebagai file header. Didalam program ini mendefinisikan struct mahasiswa yang berisi variabel untuk nim, nilai1, dan nilai2. Selain itu, file ini mendeklarasikan fungsi dan prosedur yang beroperasi pada struct tersebut, yaitu void inputMhs() dan float rata2().
+
+### 2. Mahasiswa.cpp
+```C++
 #include <iostream>
+using namespace std;
+#include "mahasiswa.h"
+
+void inputMhs(mahasiswa &m) {
+    cout << "Input nim = ";
+    cin >> (m).nim;
+    cout << "Input nilai 1 = ";
+    cin >> (m).nilai1;
+    cout << "Input nilai 2 = ";
+    cin >> (m).nilai2;
+}
+
+float rata2(mahasiswa m) {
+    return (m.nilai1 + m.nilai2) / 2.0;
+}
+```
+Program ini berisi implementasi atau kode Program (body) dari fungsi-fungsi yang telah dideklarasikan sebelumnya di mahasiswa.h . Prosedur inputMhs() digunakan untuk meminta input dari pengguna dan menyimpannya ke dalam variabel struct mahasiswa.
+
+### 3. Main.cpp
+```C++
+// testing
+#include <iostream>
+#include "mahasiswa.h"
 using namespace std;
 
 int main() {
-    //--- array 1 dimensi ---
-    int arrID[5] = {10, 20, 30, 40, 50};
-    cout << "array 1 dimensi;" <<endl;
-    for (int i = 0; i < 5; i++) {
-        cout << "arrID[" << i << "] = " << arrID[i] << endl; 
-    }
-
-    cout << endl;
-
-    // --- array 2 dimensi (baris x kolom) ---
-    int arr2D[2][3] = {
-        {1,2,3},
-        {4,5,6}
-    };
-
-    cout << "array 2 dimensi:" << endl;
-    for (int i = 0; i < 2; i++) {
-        for (int j = 0; j < 3; j++) {
-            cout << "arr2D[" << i << "][" << j << "] = " << arr2D [i][j] << " ";
-        }
-        cout << endl;
-    }
-    cout << endl;
-
-    // --- array multi dimensi (3D) ---
-    int arr3D[2][2][3] = {
-        { {1, 2, 3}, {4, 5, 6} },
-        { {7, 8, 9}, {10, 11, 12} }
-    };
-    cout << "array 3 dimensi:" << endl;
-    for (int i = 0; i < 2; i++) {
-        for (int j = 0; j < 2; j++) {
-            for (int k = 0; k < 3; k++) {
-                cout << "arr3D[" << i << "][" << j <<"][" << k << "] = " << arr3D[i][j][k] << endl;
-            }
-        }
-    }
+    mahasiswa mhs;
+    inputMhs(mhs);
+    cout << "Rata-rata nilai = " << rata2(mhs) << endl;
     return 0;
 }
 ```
-Kode di atas menunjukkan perulangan array yg dimana dimensi 1 itu merintah agar data tersimpan berurutan, dan dimensi 2 membuat baris dan kolom dan dimensi 3 menyimpan data dalam bentuk lebih kompleks seperti kumpulan beberapa tabel
-
-### 2. FUNCTION PROCEDUR
-```C++
-#include <iostream>
-using namespace std;
-
-void tulis(int x) {
-    for(int i = 0; i < x; i++) {
-        cout << "baris ke -: " << i+1 << endl;
-    }
-}
-
-int main() {
-    int jum;
-    cout << "jumlah baris kata: ";
-    cin >> jum;
-    tulis(jum);
-    return 0;
-}
-```
-Program ini berfungsi untuk menampilkan sejumlah baris teks sesuai jumlah yang dimasukkan oleh pengguna.Fungsi utamanya adalah melatih penggunaan fungsi (function) dan perulangan for dalam C++.
-
-### 3. POINTER
-```C++
-#include <iostream>
-using namespace std;
-
-void tukar(int *x, int *y) {
-    int temp;
-    temp= *x;
-    *x = *y;
-    *y = temp;
-}
-
-int main () {
-    int a = 20, b = 30;
-    int *ptr;
-
-    ptr = &a;
-    
-    cout << "value of a: " << a << endl;
-    cout << "addres of a: " << &a << endl;
-    cout << "value stored in ptr (addres of a) : " << ptr << endl;
-    cout << "value pointed to by ptr : " << *ptr << endl;
-    
-    tukar (&a, &b);
-    cout << "after swapping, value of a = " << a << " end b = " << b << endl;
-    return 0;
-}
-```
-Program ini bertujuan untuk memahami cara kerja pointer dan proses pertukaran nilai (swap) antar dua variabel menggunakan fungsi dan pointer di C++.
-Melalui contoh ini, kamu bisa melihat bagaimana variabel, alamat memori, dan pointer saling berhubungan
-
-### 4. REFERENCE
-```C++
-#include <iostream>
-using namespace std;
-
-void tukar(int &x, int &y) {
-    int temp;
-    temp= x;
-    x = y;
-    y = temp;
-}
-
-int main () {
-    int a = 20, b = 30;
-    int& ref = a;
-    
-    cout << "nilai a: " << a << endl;
-    cout << "alamat a (&a): " << &a << endl;
-    cout << "nilai ref (alias a) : " << ref << endl;
-    cout << "alamat ref (&ref) : " << &ref << endl;
-
-    // mengubah nilai a lewat reference 
-
-    ref = 50;
-    cout << "\nsetelah ref = 50;" << endl;
-    cout << "nilai a:" << a << endl;
-    cout << "nilai ref:" << ref << endl;
-    
-    tukar (a, b);
-    cout << "after swapping, value of a = " << a << " end b = " << b << endl;
-    return 0;
-}
-```
-Program ini bertujuan untuk menjelaskan konsep referensi (reference) dalam C++ serta cara menukar nilai dua variabel menggunakan fungsi dengan parameter referensi.
-Berbeda dengan pointer, reference tidak menyimpan alamat memori, tetapi menjadi nama lain dari variabel yang dirujuk
-
+Program ini merupakan yang utama menggunakan ADT mahasiswa. File ini meng-include "mahasiwa.h" agar dapat mengenali struct dan fungsi yang telah kita buat. Di dalam main(), telah dibuat sebuah objek mhs dari struct mahasiswa, memanggil prosedur inputMhas() untuk mengisi data, yang terakhir akan memanggil fungsi rata2() untuk menampilkan hasil dari perhitungan rata-rata.
 
 
 ## Unguided 
