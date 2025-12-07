@@ -106,7 +106,8 @@ Program ini merupakan yang utama menggunakan ADT mahasiswa. File ini meng-includ
 ## Unguided 
 
 ### 1. SOAL.1
-<img width="1750" height="144" alt="image" src="https://github.com/user-attachments/assets/008e026c-eb5f-4ad4-9b50-633ba153f013" />
+<img <img width="1964" height="208" alt="image" src="https://github.com/user-attachments/assets/9d404045-85cb-4ea6-b9d2-007868d6cb35" />
+ />
 
 ```C++
 #include <iostream>
