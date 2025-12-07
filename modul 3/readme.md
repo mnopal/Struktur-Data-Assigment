@@ -47,7 +47,7 @@ agar kode menjadi terstruktur, modular, dan mudah dipelihara.
 
 ## Guided 
 
-### 1. Mhasiswa.h
+### 1. Mahasiswa.h
 
 ```C++
 #ifndef MAHASISWA_H_INCLUDED
