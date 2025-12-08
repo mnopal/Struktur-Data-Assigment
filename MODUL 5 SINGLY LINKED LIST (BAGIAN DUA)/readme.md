@@ -1,4 +1,4 @@
- <h1 align="center">Laporan Praktikum Modul Abstract data type </h1>
+ <h1 align="center">Laporan Praktikum Modul Singly Linked List (bagian dua) </h1>
 <p align="center">MUHAMMAD NAUFAL</p>
 
 ## Dasar Teori
