@@ -442,147 +442,242 @@ return 0;
 ## Unguided 
 
 ### 1. SOAL.1
-<img width="681" height="1158" alt="Screenshot 2025-12-07 104024" src="https://github.com/user-attachments/assets/533f2a68-52ec-4436-a87a-66c128e24e47" />
+ ### buatlah program apapun bebas tetapi fungsi nya sama seperti tadi
 
  
-### singlylinkedlist.cpp
+### listbarang.cpp
 ```c++
-#include "Singlylinkedlist.h"
-#include <iostream>
-using namespace std;
+#include "listBarang.h"
+#include <iomanip>
 
-void CreateList(List &L) {
-    L.First = nullptr;
+// Cek kosong
+bool isEmpty(List L) {
+    return (L.first == NULL);
 }
 
-address alokasi(infotype x) {
-    address p = new ElmList;
-    p->info = x;
-    p->next = nullptr;
-    return p;
+// Buat list
+void createList(List &L) {
+    L.first = NULL;
 }
 
-void dealokasi(address p) {
-    delete p;
+// Alokasi node
+address alokasi(string nama, int stok, float harga) {
+    address P = new Node;
+    P->info.nama = nama;
+    P->info.stok = stok;
+    P->info.harga = harga;
+    P->next = NULL;
+    return P;
 }
 
-void insertFirst(List &L, address p) {
-    p->next = L.First;
-    L.First = p;
+// Dealokasi
+void dealokasi(address &P) {
+    delete P;
+    P = NULL;
 }
 
-void printInfo(List L) {
-    address p = L.First;
-    while (p != nullptr) {
-        cout << p->info << " ";
-        p = p->next;
+// Insert awal
+void insertAwal(List &L, address P) {
+    P->next = L.first;
+    L.first = P;
+}
+
+// Insert akhir
+void insertAkhir(List &L, address P) {
+    if (isEmpty(L)) {
+        L.first = P;
+    } else {
+        address Q = L.first;
+        while (Q->next != NULL) {
+            Q = Q->next;
+        }
+        Q->next = P;
     }
 }
 
-```
-
-### singlylinkedlist.h
-```c++
-#ifndef SINGLYLINKEDLIST_H
-#define SINGLYLINKEDLIST_H
-
-#include <iostream>
-using namespace std;
-
-typedef int infotype;
-
-typedef struct ElmList *address;
-struct ElmList {
-    infotype info;
-    address next;
-};
-
-struct List {
-    address First;
-};
-
-// PROTOTYPE
-void CreateList(List &L);
-address alokasi(infotype x);
-void dealokasi(address p);
-void printInfo(List L);
-void insertFirst(List &L, address p);
-
-#endif
-
-```
-
-### main.cpp
-```c++
-#include "Singlylinkedlist.h"
-#include <iostream>
-using namespace std;
-
-int main() {
-    List L;
-    address P1, P2, P3, P4, P5;
-
-    CreateList(L);
-
-    P1 = alokasi(2);
-    insertFirst(L, P1);
-
-    P2 = alokasi(0);
-    insertFirst(L, P2);
-
-    P3 = alokasi(8);
-    insertFirst(L, P3);
-
-    P4 = alokasi(12);
-    insertFirst(L, P4);
-
-    P5 = alokasi(9);
-    insertFirst(L, P5);
-
-    printInfo(L);
-
-    return 0;
+// Insert setelah
+void insertSetelah(List &L, address prev, address P) {
+    if (prev != NULL) {
+        P->next = prev->next;
+        prev->next = P;
+    }
 }
 
+// Delete awal
+void deleteAwal(List &L) {
+    if (!isEmpty(L)) {
+        address P = L.first;
+        L.first = P->next;
+        P->next = NULL;
+        dealokasi(P);
+    }
+}
+
+// Delete akhir
+void deleteAkhir(List &L) {
+    if (!isEmpty(L)) {
+        if (L.first->next == NULL) {
+            dealokasi(L.first);
+            L.first = NULL;
+        } else {
+            address Q = L.first;
+            address prev = NULL;
+            while (Q->next != NULL) {
+                prev = Q;
+                Q = Q->next;
+            }
+            prev->next = NULL;
+            dealokasi(Q);
+        }
+    }
+}
+
+// Delete setelah
+void deleteSetelah(List &L, address prev) {
+    if (prev != NULL && prev->next != NULL) {
+        address P = prev->next;
+        prev->next = P->next;
+        P->next = NULL;
+        dealokasi(P);
+    }
+}
+
+// Update awal
+void updateAwal(List L) {
+    if (!isEmpty(L)) {
+        cout << "Update node pertama\n";
+        cout << "Nama: "; cin >> L.first->info.nama;
+        cout << "Stok: "; cin >> L.first->info.stok;
+        cout << "Harga: "; cin >> L.first->info.harga;
+    }
+}
+
+// Update akhir
+void updateAkhir(List L) {
+    if (!isEmpty(L)) {
+        address Q = L.first;
+        while (Q->next != NULL) {
+            Q = Q->next;
+        }
+        cout << "Update node terakhir\n";
+        cout << "Nama: "; cin >> Q->info.nama;
+        cout << "Stok: "; cin >> Q->info.stok;
+        cout << "Harga: "; cin >> Q->info.harga;
+    }
+}
+
+// Update setelah
+void updateSetelah(List L, address prev) {
+    if (prev != NULL && prev->next != NULL) {
+        address Q = prev->next;
+        cout << "Update node setelah " << prev->info.nama << "\n";
+        cout << "Nama: "; cin >> Q->info.nama;
+        cout << "Stok: "; cin >> Q->info.stok;
+        cout << "Harga: "; cin >> Q->info.harga;
+    }
+}
+
+// Print
+void tampilList(List L) {
+    cout << fixed << setprecision(0); // supaya tidak pakai notasi ilmiah
+    address P = L.first;
+    while (P != NULL) {
+        cout << "Nama: " << P->info.nama
+             << ", Stok: " << P->info.stok
+             << ", Harga: " << P->info.harga << endl;
+        P = P->next;
+    }
+}
+
+
+// Hitung node
+int jumlahNode(List L) {
+    int count = 0;
+    address P = L.first;
+    while (P != NULL) {
+        count++;
+        P = P->next;
+    }
+    return count;
+}
+
+// Cari berdasarkan nama
+void cariNama(List L, string nama) {
+    address P = L.first;
+    int pos = 0;
+    bool ketemu = false;
+    while (P != NULL) {
+        pos++;
+        if (P->info.nama == nama) {
+            cout << "Data ditemukan di posisi ke-" << pos << endl;
+            ketemu = true;
+            break;
+        }
+        P = P->next;
+    }
+    if (!ketemu) {
+        cout << "Data tidak ditemukan\n";
+    }
+}
+
+// Cari berdasarkan alamat
+void cariAlamat(List L, address Ptarget) {
+    address P = L.first;
+    int pos = 0;
+    bool ketemu = false;
+    while (P != NULL) {
+        pos++;
+        if (P == Ptarget) {
+            cout << "Node ditemukan di posisi ke-" << pos << endl;
+            ketemu = true;
+            break;
+        }
+        P = P->next;
+    }
+    if (!ketemu) {
+        cout << "Alamat node tidak ditemukan\n";
+    }
+}
+
+// Cari range harga
+void cariRangeHarga(List L, float min, float max) {
+    address P = L.first;
+    bool ketemu = false;
+    while (P != NULL) {
+        if (P->info.harga >= min && P->info.harga <= max) {
+            cout << "Nama: " << P->info.nama 
+                 << ", Harga: " << P->info.harga << endl;
+            ketemu = true;
+        }
+        P = P->next;
+    }
+    if (!ketemu) {
+        cout << "Tidak ada data dalam range harga\n";
+    }
+}
+
+
 ```
-#### Output:
-<img width="1750" height="148" alt="image" src="https://github.com/user-attachments/assets/f540055f-6be2-443a-b4a0-37624ae6c3ff" />
 
-Program tersebut digunakan untuk mengimplementasikan struktur data Singly Linked List serta mempraktikkan operasi dasar pada list, yaitu inisialisasi list, alokasi node, penyisipan elemen di awal list (insertFirst), dan penelusuran elemen (printInfo). Program ini bertujuan untuk menunjukkan bagaimana node saling terhubung melalui pointer serta bagaimana perubahan struktur list terjadi setelah operasi penyisipan.
-
-
-#### Full code Screenshot:
-### singlylinkedlist.h
-<img width="2560" height="1600" alt="image" src="https://github.com/user-attachments/assets/1aa9b2a6-86be-4148-a003-a25f52f32558" />
-
-### singlylinkedlist.cpp
-<img width="2560" height="1600" alt="image" src="https://github.com/user-attachments/assets/2d05b6d6-8b7f-4d3b-9e7b-c08ba9ff8afb" />
-
-### main.cpp
-<img width="2560" height="1600" alt="image" src="https://github.com/user-attachments/assets/f5f567ef-d6a0-4637-9e36-25d798ada193" />
-
-
-
-
-
-### 2. SOAL.2
-<img width="1061" height="389" alt="image" src="https://github.com/user-attachments/assets/58f97491-569b-4821-8712-3e54f015af1a" />
-
-
-### singlylinkedlist.h
+### listbarang.h
 ```c++
-#ifndef SINGLYLINKEDLIST_H
-#define SINGLYLINKEDLIST_H
-#define nil NULL
+#ifndef LISTBARANG_H
+#define LISTBARANG_H
 
 #include <iostream>
 using namespace std;
 
-typedef int infotype;
-typedef struct elmlist *address;
+struct Barang {
+    string nama;
+    int stok;
+    float harga;
+};
 
-struct elmlist{
-    infotype info;
+typedef Barang InfoBarang;
+typedef struct Node *address;
+
+struct Node {
+    InfoBarang info;
     address next;
 };
 
@@ -590,204 +685,148 @@ struct List {
     address first;
 };
 
-// prosedur and function
-void CreateList(List &L);
-address alokasi(infotype x);
+bool isEmpty(List L);
+void createList(List &L);
+
+address alokasi(string nama, int stok, float harga);
 void dealokasi(address &P);
-void printInfo(List L);
-void insertFirst(List &L, address P);
 
-//lanjutan untuk nomor 2
-void deleteFirst(List &L);
-void deleteLast(List &L);
-void deleteAfter(List &L, address Prec);
-int nbList(List L);
-void deleteList(List &L);
+// Insert
+void insertAwal(List &L, address P);
+void insertAkhir(List &L, address P);
+void insertSetelah(List &L, address prev, address P);
 
+// Delete
+void deleteAwal(List &L);
+void deleteAkhir(List &L);
+void deleteSetelah(List &L, address prev);
+
+// Update
+void updateAwal(List L);
+void updateAkhir(List L);
+void updateSetelah(List L, address prev);
+
+// Print
+void tampilList(List L);
+
+// Utility
+int jumlahNode(List L);
+
+// Searching
+void cariNama(List L, string nama);
+void cariAlamat(List L, address P);
+void cariRangeHarga(List L, float min, float max);
 
 #endif
 ```
-### singlylinkedlist.cpp
+
+### main.cpp
 ```c++
-#include "singlylinkedlist.h"
-#include <iostream>
-using namespace std;
+#include "listBarang.h"
 
-// prosedur and function
-void CreateList(List &L) {
-    L.first = nil;
-}
-
-//buat gerbong atau node baru
-address alokasi(infotype x) {
-    address P = new elmlist;
-    P -> info = x;
-    P -> next = nil;
-    return P;
-}
-
-// Hapus node 
-void dealokasi(address &P) {
-    delete P;
-}
-
-// digunakan untuk menampilkan output dari node atau gerbong
-void printInfo(List L){
-    address  P = L.first;
-    if (P == nil) {
-        cout << "Listnya kosong" << endl;
-    } else {
-        while (P != nil) {
-            cout << P -> info << " ";
-            P = P -> next;
-        }
-        cout << endl;
-    }
-}
-
-void insertFirst(List &L, address P){
-    P -> next = L.first;
-    L.first = P;
-}
-
-// lanjutan untuk no 2
-void deleteFirst(List &L) {
-    if (L.first != nil) {
-        address P = L.first;
-        L.first = P -> next;
-        dealokasi(P);
-    }
-}
-void deleteLast(List &L) {
-    if (L.first == nil) {
-        return;
-    }
-    if (L.first->next == nil) {
-        dealokasi(L.first);
-        L.first = nil;
-    } else {
-        address P = L.first;
-        address Prec = nil; 
-        while (P->next != nil) {
-            Prec = P;
-            P = P->next;
-        }
-        
-        Prec->next = nil; 
-        dealokasi(P);     
-    }
-
-}
-void deleteAfter(List &L, address Prec) {
-    if (Prec != nil && Prec->next != nil) {
-        address P = Prec->next;
-        Prec->next = P->next;  
-        dealokasi(P); 
-    }
-}
-int nbList(List L) {
-    int count = 0;
-    address P = L.first;
-    while (P != nil) {
-        count++;
-        P = P -> next;
-    }
-    return count;
-}
-void deleteList(List &L) {
-    address P = L.first;
-    while (P != nil) {
-        address temp = P;
-        P = P->next;
-        dealokasi(temp); 
-    }
-    L.first = nil; 
-}
-```
-main.cpp
-``` c++
-#include "Singlylinkedlist.h"
-
-#include <iostream>
-using namespace std;
-
-int main () {
+int main() {
     List L;
-    address P1, P2, P3, P4, P5 = nil;
-    CreateList(L);
+    createList(L);
 
-    P1 = alokasi(2);
-    insertFirst(L,P1);
+    address A, B, C, D, E;
 
-    P2 = alokasi(0);
-    insertFirst(L, P2);
+    A = alokasi("Laptop", 10, 7500000);
+    B = alokasi("Mouse", 50, 150000);
+    C = alokasi("Keyboard", 30, 300000);
+    D = alokasi("Monitor", 20, 2000000);
+    E = alokasi("Printer", 5, 2500000);
 
-    P3 = alokasi(8);
-    insertFirst(L,P3);
+    insertAwal(L, A);
+    insertAkhir(L, B);
+    insertSetelah(L, A, C);
+    insertSetelah(L, C, D);
+    insertAkhir(L, E);
 
-    P4 = alokasi(12);
-    insertFirst(L,P4);
+    cout << "=== Data Barang ===\n";
+    tampilList(L);
+    cout << "Jumlah node: " << jumlahNode(L) << endl;
 
+    cout << "\n--- Searching ---\n";
+    cariNama(L, "Mouse");
+    cariAlamat(L, C);
+    cariRangeHarga(L, 100000, 1000000);
 
-    P5 = alokasi(9);
-    insertFirst(L, P5);
+    cout << "\n--- Delete ---\n";
+    deleteAwal(L);
+    deleteAkhir(L);
+    deleteSetelah(L, A);
 
-    printInfo(L);
-
-    cout << "Soal 2 terkait delete" << endl;
-
-    deleteFirst(L);
-    deleteLast(L);
-    deleteAfter(L,P4);
-
-    printInfo(L);
-    cout << "Jumlah Node: "<< nbList(L) << endl;
-
-    deleteList(L);
-    cout << "List Berhasil Terhapus" << endl;
-    cout << "Jumlah node: " << nbList(L) << endl;
+    cout << "\n=== Data Setelah Delete ===\n";
+    tampilList(L);
 
     return 0;
 }
 
+
 ```
+#### Output:
+<img width="1238" height="878" alt="image" src="https://github.com/user-attachments/assets/fbb841fb-4db6-45c5-85c2-e6a3776371e5" />
 
-### OUTPUT
-<img width="1290" height="303" alt="image" src="https://github.com/user-attachments/assets/55d9b94e-78c2-4124-a03e-9ef01615db75" />
+
+1. Penjelasan listBarang.h
+
+- File header ini berfungsi sebagai deklarasi struktur data dan prototipe fungsi
+- Mendefinisikan struktur data Barang yang menyimpan atribut data berupa nama, stok, dan harga
+- Mendefinisikan struktur Node sebagai elemen dasar singly linked list yang berisi data Barang dan pointer next
+- Mendefinisikan struktur List untuk menyimpan alamat node pertama (first)
+
+2. litsbarang.cpp
+File ini berisi implementasi dari seluruh fungsi yang telah dideklarasikan 
+
+Fungsi utamanya adalah:
+
+- Inisialisasi dan validasi list:
+Mengatur kondisi awal list agar kosong dan menyediakan pengecekan apakah list memiliki elemen atau tidak.
+
+- Manajemen memori dinamis:
+Mengalokasikan node baru menggunakan new dan menghapus node menggunakan delete untuk mencegah memory leak.
+
+- Operasi penyisipan (Insert):
+Menyediakan mekanisme penambahan node di awal, di akhir, dan setelah node tertentu dengan pengaturan pointer next.
+
+- Operasi penghapusan (Delete):
+Menghapus node dari awal, akhir, dan setelah node tertentu secara aman dengan memperhatikan kondisi list kosong atau hanya memiliki satu node
+
+3. main.cpp
+File ini berperan sebagai program utama (driver program) untuk menguji dan menjalankan fungsi-fungsi dari linked list.
+
+fungsinya untuk:
+- Membuat dan menginisialisasi objek list.
+- Mengalokasikan beberapa node dengan data awal.
+- Melakukan operasi penambahan node menggunakan berbagai metode (awal, akhir, dan setelah node tertentu).
+- Menampilkan isi list dan jumlah node.
+- Menguji operasi update data pada node tertentu.
+- Melakukan berbagai metode pencarian data.
+- Menguji operasi penghapusan node (awal, akhir, dan setelah node tertentu).
+- Menampilkan kondisi akhir list dan menghapus seluruh elemen list.
+
+#### Full code Screenshot:
+### listbarang.h
+<img width="2560" height="1600" alt="image" src="https://github.com/user-attachments/assets/cc6110af-fd04-4e5a-a835-f42ef9777e31" />
+<img width="2560" height="1600" alt="image" src="https://github.com/user-attachments/assets/c5263b3c-8c62-4f90-8b97-375f303a44e1" />
 
 
-Program nomor 2 merupakan pengembangan dari program sebelumnya dengan menambahkan fitur penghapusan node pada singly linked list. Program tetap menggunakan konsep ADT dengan tiga file: Singlylist.h berisi deklarasi fungsi deleteFirst, deleteLast, deleteAfter, nbList, dan deleteList; Singlylist.cpp berisi implementasi fungsi-fungsi tersebut; dan main.cpp digunakan untuk menjalankan serta menguji program.
+### listbarang.cpp
+<img width="2560" height="1600" alt="image" src="https://github.com/user-attachments/assets/b149a4b7-97ea-4f67-84d9-03db3023e4be" />
+<img width="2560" height="1600" alt="image" src="https://github.com/user-attachments/assets/b3cc1b27-bd25-4e92-bd5b-0890160430ee" />
+<img width="2560" height="1600" alt="image" src="https://github.com/user-attachments/assets/5ab92ddd-a9d4-45dd-b190-59a8be6a6f74" />
+<img width="2560" height="1600" alt="image" src="https://github.com/user-attachments/assets/32c0a7e4-8fea-4a55-9340-c2875756a2e7" />
+<img width="2560" height="1600" alt="image" src="https://github.com/user-attachments/assets/b97b6de3-1a51-43fc-a440-3324691e52ab" />
 
-Pada pengujian, list awal 9 → 12 → 8 → 0 → 2 dimodifikasi dengan menghapus elemen pertama, terakhir, dan node tertentu sehingga tersisa 12 → 0. Selain itu, program juga menghitung jumlah node yang tersisa dan menghapus seluruh isi list.
-
-### FULL CODE SCREENSHOT
 
 ### main.cpp
-<img width="2560" height="1600" alt="image" src="https://github.com/user-attachments/assets/f06d5960-3202-40b4-bafd-14e0ac692da1" />
-
-### singlylinkedlist.cpp
-<img width="2560" height="1600" alt="image" src="https://github.com/user-attachments/assets/f0685b07-3ff8-430d-9258-235080aa5c80" />
-<img width="2560" height="1600" alt="image" src="https://github.com/user-attachments/assets/8a67db2f-a379-4064-b6b1-e4393bebd346" />
-
-### singlylinkedlist.h
-<img width="2560" height="1600" alt="image" src="https://github.com/user-attachments/assets/34829842-3b9e-4558-be61-07ced58540b0" />
-
-
+<img width="2560" height="1600" alt="image" src="https://github.com/user-attachments/assets/8af8eddd-f803-47b7-9033-532318a479e4" />
 
 
 
 ## Kesimpulan
-kesimpulan praktikum ini badalah memahami dan mengimplementasikan Singly Linked List (List Berantai Tunggal) menggunakan bahasa pemrograman C++ dengan pendekatan Abstract Data Type (ADT).
+Singly Linked List merupakan struktur data dinamis yang menyimpan elemen dalam bentuk node yang saling terhubung menggunakan pointer. Setiap node terdiri dari dua bagian utama, yaitu data dan penunjuk ke node berikutnya. Struktur ini memungkinkan operasi penambahan dan penghapusan data dilakukan secara fleksibel tanpa memerlukan ruang memori yang berurutan seperti pada array.
 
-Konsep Dasar dan Struktur
-Definisi: Singly Linked List adalah struktur data dinamis yang terdiri dari serangkaian elemen data (node) yang saling terhubung menggunakan pointer
-
-Komponen Node: Setiap elemen (node) terdiri dari dua bagian utama:
-
-- Data (info): Informasi utama yang disimpan.
-
-- Successor (next): Pointer yang menyimpan alamat elemen berikutnya.
-
-Karakteristik: List ini hanya memiliki satu arah pointer , sehingga hanya mendukung pembacaan maju. Elemen pertama diacu oleh pointer first/head , dan elemen terakhir akan menunjuk ke Nil/NULL.
+Melalui implementasi program, dapat disimpulkan bahwa Singly Linked List sangat efektif untuk pengelolaan data yang membutuhkan operasi dinamis seperti insert, delete, update, dan searching. Selain itu, pemisahan kode ke dalam file header (.h), source (.cpp), dan main program (main.cpp) membuat program lebih terstruktur, mudah dibaca, serta lebih mudah dalam pengembangan dan pemeliharaan di masa mendatang.
 ## Referensi
 [1] I. Holm, Narrator, and J. Fullerton-Smith, Producer, How to Build a Human [DVD]. London: BBC; 2002.
