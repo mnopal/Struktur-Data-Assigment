@@ -4,33 +4,28 @@
 #include <iostream>
 using namespace std;
 
-// Definisika ADT pada Queue array
-typedef int infotype;
 const int MAX = 5;
-struct Queue {
-    infotype info[MAX];
-    int head, tail;
+
+struct Paket {
+    string KodeResi;
+    string NamaPengirim;
+    int BeratBarang; 
+    string Tujuan;
 };
 
-// deklaraasi fungsi atau procedur primitif
-void CreateQueue(Queue &Q);
-bool isEmptyQueue(Queue Q);
-bool isFullQueue(Queue Q);
-void printInfo(Queue Q);
+struct QueueEkspedisi {
+    Paket dataPaket[MAX];
+    int Head;
+    int Tail;
+};
 
-// soal 1
-// Alternatif 1 (head diam, tail bergerak).
-void enqueue1(Queue &Q, infotype x);
-int dequeue1(Queue &Q);
+bool isEmpty(QueueEkspedisi Q);
+bool isFull(QueueEkspedisi Q);
+void createQueue(QueueEkspedisi &Q);
+void enQueue(QueueEkspedisi &Q);
+void deQueue(QueueEkspedisi &Q);
+void viewQueue(QueueEkspedisi Q);
 
-// Soal 2: Alternatif 2 head dan tail bergerak
-void enqueue2(Queue &Q, infotype x);
-int dequeue2(Queue &Q);
-
-// Soal 3: Alternatif 3 head dan tail berputar (Circular)
-bool isFullCircular(Queue Q);
-void enqueue3(Queue &Q, infotype x);
-int dequeue3(Queue &Q);
-
+int TotalBiayaPengiriman(QueueEkspedisi Q);
 
 #endif
