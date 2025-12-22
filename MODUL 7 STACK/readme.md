@@ -1,6 +1,6 @@
  <h1 align="center">Laporan Praktikum Modul Stack </h1>
 <p align="center">MUHAMMAD NAUFAL</p>
-
+ 
 ## Dasar Teori
 Stack adalah struktur data yang mengikuti prinsip LIFO (Last In First Out), di mana elemen terakhir yang dimasukkan akan menjadi elemen pertama yang dikeluarkan. Struktur ini dapat diimplementasikan menggunakan dua representasi utama: representasi pointer yang bersifat dinamis dengan alokasi memori sesuai kebutuhan, dan representasi array yang bersifat statis dengan kapasitas tetap. Operasi dasar stack meliputi push untuk menambahkan elemen ke posisi teratas, pop untuk menghapus elemen dari posisi teratas, serta isEmpty untuk memeriksa apakah stack kosong, dengan kompleksitas waktu O(1) untuk operasi push dan pop. Stack memiliki berbagai aplikasi praktis seperti mekanisme undo/redo, manajemen pemanggilan fungsi, pengecekan sintaks, dan evaluasi ekspresi matematika. Kelebihan utamanya terletak pada kesederhanaan dan kecepatan operasi untuk pola akses LIFO, meskipun memiliki keterbatasan dalam hal akses yang hanya terbatas pada elemen teratas.
 
