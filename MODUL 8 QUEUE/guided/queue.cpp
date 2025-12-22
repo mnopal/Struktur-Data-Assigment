@@ -1,81 +1,36 @@
-#include "queue.h"
+#ifndef QUEUE_H
+#define QUEUE_H
 
-bool isEmpty(QueueEkspedisi Q) {
-    return (Q.Head == -1 && Q.Tail == -1);
-}
+#include <iostream>
+using namespace std;
 
-bool isFull(QueueEkspedisi Q) {
-    return (Q.Tail == MAX - 1);
-}
+// Definisika ADT pada Queue array
+typedef int infotype;
+const int MAX = 5;
+struct Queue {
+    infotype info[MAX];
+    int head, tail;
+};
 
-void createQueue(QueueEkspedisi &Q) {
-    Q.Head = -1;
-    Q.Tail = -1;
-}
+// deklaraasi fungsi atau procedur primitif
+void CreateQueue(Queue &Q);
+bool isEmptyQueue(Queue Q);
+bool isFullQueue(Queue Q);
+void printInfo(Queue Q);
 
-void enQueue(QueueEkspedisi &Q) {
-    if (isFull(Q)) {
-        cout << "Queue penuh!\n";
-        return;
-    }
+// soal 1
+// Alternatif 1 (head diam, tail bergerak).
+void enqueue1(Queue &Q, infotype x);
+int dequeue1(Queue &Q);
 
-    Paket P;
-    cout << "Masukkan Kode Resi     : "; cin >> P.KodeResi;
-    cout << "Masukkan Nama Pengirim : "; cin >> P.NamaPengirim;
-    cout << "Masukkan Berat Barang  : "; cin >> P.BeratBarang;
-    cout << "Masukkan Tujuan        : "; cin >> P.Tujuan;
+// Soal 2: Alternatif 2 head dan tail bergerak
+void enqueue2(Queue &Q, infotype x);
+int dequeue2(Queue &Q);
 
-    if (isEmpty(Q)) {
-        Q.Head = Q.Tail = 0;
-    } else {
-        Q.Tail++;
-    }
+// Soal 3: Alternatif 3 head dan tail berputar (Circular)
+bool isFullCircular(Queue Q);
+void enqueue3(Queue &Q, infotype x);
+int dequeue3(Queue &Q);
 
-    Q.dataPaket[Q.Tail] = P;
-}
 
-void deQueue(QueueEkspedisi &Q) {
-    if (isEmpty(Q)) {
-        cout << "Queue kosong!\n";
-        return;
-    }
-
-    cout << "Menghapus paket dengan resi: " << Q.dataPaket[Q.Head].KodeResi << "\n";
-
-    for (int i = Q.Head; i < Q.Tail; i++) {
-        Q.dataPaket[i] = Q.dataPaket[i + 1];
-    }
-
-    Q.Tail--;
-
-    if (Q.Tail < 0) {
-        Q.Head = Q.Tail = -1;
-    }
-}
-
-void viewQueue(QueueEkspedisi Q) {
-    if (isEmpty(Q)) {
-        cout << "Queue kosong!\n";
-        return;
-    }
-
-    cout << "\n--- Daftar Paket dalam Antrian ---\n";
-    for (int i = Q.Head; i <= Q.Tail; i++) {
-        cout << "Posisi " << i + 1 << ":\n";
-        cout << "  Kode Resi     : " << Q.dataPaket[i].KodeResi << endl;
-        cout << "  Pengirim      : " << Q.dataPaket[i].NamaPengirim << endl;
-        cout << "  Berat Barang  : " << Q.dataPaket[i].BeratBarang << " kg" << endl;
-        cout << "  Tujuan        : " << Q.dataPaket[i].Tujuan << endl;
-        cout << "-----------------------------------\n";
-    }
-}
-
-int TotalBiayaPengiriman(QueueEkspedisi Q) {
-    if (isEmpty(Q)) return 0;
-
-    int total = 0;
-    for (int i = Q.Head; i <= Q.Tail; i++) {
-        total += Q.dataPaket[i].BeratBarang * 8250;
-    }
-    return total;
-}
+#endif
