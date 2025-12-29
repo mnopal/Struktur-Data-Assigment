@@ -1,6 +1,6 @@
  <h1 align="center">Laporan Praktikum Modul Queue </h1>
 <p align="center">MUHAMMAD NAUFAL</p>
-
+ 
 ## Dasar Teori
 Queue (dibaca : kyu) merupakan struktur data yang dapat diumpamakan seperti sebuah antrean.
 Misalkan antrean pada loket pembelian tiket Kereta Api. Orang yang akan mendapatkan pelayanan
